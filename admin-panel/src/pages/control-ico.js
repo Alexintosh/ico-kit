@@ -96,7 +96,18 @@ export default class ControlICO extends Component {
             <div className="row flex-sm-row-reverse">
               <div className="col-md-12">
                 <label>STEP {Number(this.state.step)}</label>
-                <h2>What type of listing do you want to create?</h2>
+
+                <div className="row" >
+                  <div className="col-md-8">
+                    <h2>What type of listing do you want to create?</h2>
+                  </div>
+                  <div className="col-md-4">
+                    <button className="pull-right btn btn-primary" onClick={() => this.handleSchemaSelection()}>
+                        Next
+                    </button>
+                  </div>
+                </div>
+
                 <div className="schema-options">
                   {this.schemaList.map(schema => (
                     <div
@@ -110,11 +121,6 @@ export default class ControlICO extends Component {
                       {schema.name}
                     </div>
                   ))}
-                </div>
-                <div className="btn-container">
-                  <button className="float-right btn btn-primary" onClick={() => this.handleSchemaSelection()}>
-                    Next
-                  </button>
                 </div>
               </div>
             </div>
@@ -132,12 +138,14 @@ export default class ControlICO extends Component {
                   formData={this.state.formListing.formData}
                   onError={(errors) => console.log(`react-jsonschema-form errors: ${errors.length}`)}
                 >
+
                   <div className="btn-container">
                     <button className="btn btn-other" onClick={() => this.setState({step: this.STEP.PICK_SCHEMA})}>
                       Back
                     </button>
                     <button type="submit" className="float-right btn btn-primary">Continue</button>
                   </div>
+
                 </Form>
 
               </div>
