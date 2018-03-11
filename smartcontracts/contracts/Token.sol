@@ -112,7 +112,7 @@ contract TESTToken is StandardToken, Ownable {
      * Transfer from sender to another account
      *
      * @param to Destination address
-     * @param value Amount of docks to send
+     * @param value Amount of tokens to send
      */
     function transfer(address to, uint256 value) public onlyWhenTransferAllowed validDestination(to) returns (bool) {
         return super.transfer(to, value);
@@ -123,7 +123,7 @@ contract TESTToken is StandardToken, Ownable {
      *
      * @param from Origin address
      * @param to Destination address
-     * @param value Amount of docks to send
+     * @param value Amount of tokens to send
      */
     function transferFrom(address from, address to, uint256 value) public onlyWhenTransferAllowed validDestination(to) returns (bool) {
         return super.transferFrom(from, to, value);
