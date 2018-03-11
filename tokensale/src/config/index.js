@@ -12,6 +12,6 @@ export default {
     },
     logo: logo,
     GOAL_ETH: 9123,
-    START_DATE_UTC: '2018-02-21 07',
-    PHASE_1_END_DURATION: '04:00',
+    START_DATE_UTC: '2018-03-11 07',
+    PHASE_1_END_DURATION: '12:00',
 }
