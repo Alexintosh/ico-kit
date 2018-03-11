@@ -77,7 +77,7 @@ contract Crowdsale is Pausable {
 
     /**
      * The constructor of the contract.
-     * @param tokenToEtherRate Number of docks per ether
+     * @param tokenToEtherRate Number of Token per ether
      * @param beneficiaryAddr Address where funds are collected
      */
     function Crowdsale(
@@ -241,8 +241,8 @@ contract Crowdsale is Pausable {
     /**
      * Allocate tokens for presale participants before public offering, can only be executed at Stages.Setup stage.
      *
-     * @param to Participant address to send docks to
-     * @param tokens Amount of docks to be sent to parcitipant
+     * @param to Participant address to send Token to
+     * @param tokens Amount of Token to be sent to parcitipant
      */
     function allocateTokensBeforeOffering(address to, uint256 tokens) public onlyOwner atStage(Stages.Setup) returns (bool) {
         if (!token.transferFrom(token.owner(), to, tokens)) {
