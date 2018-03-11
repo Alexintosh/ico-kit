@@ -4,6 +4,7 @@ import originService from '../services/origin-service'
 import contractService from '../services/contract-service'
 
 import ListingDetail from '../components/listing-detail'
+import Stats from '../components/stats'
 import Form from 'react-jsonschema-form'
 import Overlay from '../components/overlay'
 
@@ -23,13 +24,14 @@ export default class ControlICO extends Component {
     }
 
     this.schemaList = [
-        {type: 'whitelist', name: 'whitelist', 'img': 'announcements.jpg'},
-        {type: 'updateRate', name: 'updateRate', 'img': 'announcements.jpg'},
-        {type: 'ownerSafeWithdrawal', name: 'ownerSafeWithdrawal', 'img': 'announcements.jpg'},
-        {type: 'whitelistRemove', name: 'whitelistRemove', 'img': 'announcements.jpg'},
-        {type: 'startOffering', name: 'startOffering', 'img': 'announcements.jpg'},
-        {type: 'endOffering', name: 'endOffering', 'img': 'announcements.jpg'},
-        {type: 'allocateTokensBeforeOffering', name: 'allocateTokensBeforeOffering', 'img': 'announcements.jpg'},
+        {type: 'whitelist', name: 'Add address to whitelist', 'img': 'announcements.jpg'},
+        {type: 'isWhitelisted', name: 'Check address in whitelist', 'img': 'announcements.jpg'},
+        {type: 'updateRate', name: 'Update token-to-Ether-Rate ratio', 'img': 'announcements.jpg'},
+        {type: 'ownerSafeWithdrawal', name: 'Execute Withdrawal', 'img': 'announcements.jpg'},
+        {type: 'whitelistRemove', name: 'Remove Adress from whitelist', 'img': 'announcements.jpg'},
+        {type: 'startOffering', name: 'StartOffering', 'img': 'announcements.jpg', type: 'text-success'},
+        {type: 'endOffering', name: 'End ICO', 'img': 'announcements.jpg', type: 'text-danger'},
+        {type: 'allocateTokensBeforeOffering', name: 'Allocate Tokens Before Offering', 'img': 'announcements.jpg'},
     ]
 
     this.state = {
@@ -91,6 +93,7 @@ export default class ControlICO extends Component {
     window.scrollTo(0, 0)
     return (
       <div className="container listing-form">
+        <Stats/>
         { this.state.step === this.STEP.PICK_SCHEMA &&
           <div className="step-container pick-schema">
             <div className="row flex-sm-row-reverse">
@@ -118,7 +121,7 @@ export default class ControlICO extends Component {
                       key={schema.type}
                       onClick={() => this.setState({selectedSchemaType:schema.type})}
                     >
-                      {schema.name}
+                      <span className={ schema.type ? schema.type : null}>{schema.name}</span>
                     </div>
                   ))}
                 </div>

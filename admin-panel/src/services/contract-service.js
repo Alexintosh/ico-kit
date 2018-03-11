@@ -28,13 +28,71 @@ class ContractService {
       case 'whitelist':
         return this.whitelistAddr(data.addresses)
         break;
+      case 'isWhitelisted':
+        return this.isWhitelisted(data.address)
+        break;
+
+      case 'updateRate':
+        return this.updateRate(data.rate)
+        break;
 
       default:
         break;
     }
   }
 
-  whitelistAddr(addresses = []){
+  get(public_var) {
+    return new Promise((resolve, reject) => {
+      window.web3.eth.getAccounts((error, accounts) => {
+          this.crowdsale
+          .at('0xdda6327139485221633a1fcd65f4ac932e60a2e1')
+          [public_var](
+            (error, result) => {
+              resolve(result.c ? result.c : result)
+            }
+          );
+      })
+    })
+
+  }
+
+  updateRate(rate) {
+    return new Promise((resolve, reject) => {
+      window.web3.eth.getAccounts((error, accounts) => {
+          this.crowdsale
+          .at('0xdda6327139485221633a1fcd65f4ac932e60a2e1')
+          .updateRate(
+            rate,
+            {from: accounts[0] },
+            (error, result) => {
+              console.log('result', result)
+              console.log('error', error)
+              resolve(result)
+            }
+          );
+      })
+    })
+  }
+
+  isWhitelisted(address) {
+    return new Promise((resolve, reject) => {
+      window.web3.eth.getAccounts((error, accounts) => {
+          this.crowdsale
+          .at('0xdda6327139485221633a1fcd65f4ac932e60a2e1')
+          .whitelists(
+            address,
+            {from: accounts[0] },
+            (error, result) => {
+              console.log('result', result)
+              console.log('error', error)
+              resolve(result)
+            }
+          );
+      })
+    })
+  }
+
+  whitelistAddr(addresses = []) {
     return new Promise((resolve, reject) => {
       window.web3.eth.getAccounts((error, accounts) => {
           this.crowdsale

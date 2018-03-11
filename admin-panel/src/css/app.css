@@ -350,6 +350,10 @@ a:hover {
   font-size: 24px;
 }
 
+.m5 {
+  margin: 5px;
+}
+
 .schema-selection:hover {
   border: solid 1px #1a82ff;
   cursor:pointer;
