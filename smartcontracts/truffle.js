@@ -5,7 +5,7 @@ module.exports = {
       host: "localhost",
       port: 7545,
       gas: 6721975, // Gas limit used for deploys
-      network_id: "*" // Match any network id
+      network_id: 5777 // Match any network id
     },
 
     rinkeby: {
