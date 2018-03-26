@@ -1,0 +1,16 @@
+{
+    "$schema":"http://json-schema.org/draft-04/schema#",
+    "description":"Whitelist adresses",
+    "type": "object",
+    "required": ["addresses"],
+    "properties": {
+      "addresses": {
+        "type": "array",
+        "title": "ETH Adresses",
+        "items": {
+          "type": "string",
+          "default": "0x0000000"
+      }
+    }
+  }
+}
